@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reactivities", "Reactivities\Reactivities.csproj", "{4E94070C-0D6B-47F0-8F94-87C35682DA4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reactivities", "Reactivities\Reactivities.csproj", "{4E94070C-0D6B-47F0-8F94-87C35682DA4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{066DBFF6-5E2E-429C-9CED-FBD6A6D753C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{066DBFF6-5E2E-429C-9CED-FBD6A6D753C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{1E0BCB5F-4653-44CD-A17A-7EB23D983262}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{1E0BCB5F-4653-44CD-A17A-7EB23D983262}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{8620BED6-8304-420F-891D-1B9A15C5E42C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{8620BED6-8304-420F-891D-1B9A15C5E42C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{A1025941-5BCD-4A7F-A930-D5FA9B543BDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{A1025941-5BCD-4A7F-A930-D5FA9B543BDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

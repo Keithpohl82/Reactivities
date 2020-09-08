@@ -1,13 +1,11 @@
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import Axios from 'axios';
-import { Header, Icon, List } from 'semantic-ui-react';
+import {Container } from 'semantic-ui-react';
 import { IActivity } from '../models/activity';
 import NavBar from '../../features/nav/NavBar';
-
-
-
+import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
 
 
 const App = () => {
@@ -21,14 +19,12 @@ const App = () => {
     }, [] );
 
      return (
-         <div>
+         <Fragment>
              <NavBar />
-              <List>
-                 {activities.map(activity => (
-                   <List.Item key={activity.id}>{activity.title}</List.Item>
-                   ))}
-               </List>
-        </div>
+             <Container sytle={{marginTop: '7em'}}>
+                 <ActivityDashboard activities={activities}/>
+             </Container>
+        </Fragment>
         );
 }
 

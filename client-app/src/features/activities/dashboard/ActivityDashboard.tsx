@@ -12,6 +12,10 @@ interface IProps {
     selectedActivity: IActivity | null;
     editMode: boolean;
     setEditMode: (editMode: boolean) => void;
+    setSelectedActivity: (activity: IActivity | null) => void;
+    createActivity: (activity: IActivity) => void;
+    editActivity: (activity: IActivity) => void;
+    deletActivity: (id: string) => void;
 }
 
 const ActivityDashboard: React.FC<IProps> = ({
@@ -19,20 +23,43 @@ const ActivityDashboard: React.FC<IProps> = ({
     selectActivity,
     selectedActivity,
     editMode,
-    setEditMode
+    setEditMode,
+    setSelectedActivity,
+    createActivity,
+    editActivity,
+    deletActivity
     }) => {
+
     return (
         <Grid>
+
             <Grid.Column width={10}>
-                <ActivityList activities={activities} selectActivity={selectActivity} />
+                <ActivityList
+                    activities={activities}
+                    selectActivity={selectActivity}
+                    deletActivity={deletActivity}
+                />
             </Grid.Column>
+
 
             <Grid.Column width={6}>
                 {selectedActivity && !editMode && (
-                    <ActivityDetails activity={selectedActivity} setEditMode={setEditMode} />
+                    <ActivityDetails
+                        activity={selectedActivity}
+                        setEditMode={setEditMode}
+                        setSelectedActivity={setSelectedActivity}
+                    />
                     )}
-                {editMode && <ActivityForm />}
+                {editMode &&
+                    <ActivityForm 
+                    key={(selectedActivity && selectedActivity.id) || 0}
+                    setEditMode={setEditMode}
+                    activity={selectedActivity!}
+                    createActivity={createActivity}
+                    editActivity={editActivity}
+                />}
             </Grid.Column>
+
         </Grid>
     );
 };

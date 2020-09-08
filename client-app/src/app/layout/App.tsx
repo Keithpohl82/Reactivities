@@ -1,11 +1,11 @@
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { useState, useEffect, Fragment } from 'react';
-import Axios from 'axios';
 import {Container } from 'semantic-ui-react';
 import { IActivity } from '../models/activity';
 import NavBar from '../../features/nav/NavBar';
 import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
+import agent from '../api/agent';
 
 
 const App = () => {
@@ -24,28 +24,34 @@ const App = () => {
     };
 
     const handleCreateActivity = (activity: IActivity) => {
-        setActivities([...activities, activity]);
-        setSelectedActivity(activity);
-        setEditMode(false);
+        agent.Activities.create(activity).then(() => {
+            setActivities([...activities, activity]);
+            setSelectedActivity(activity);
+            setEditMode(false);
+        })
     };
 
     const handleEditActivity = (activity: IActivity) => {
-        setActivities([...activities.filter(a => a.id !== activity.id), activity]);
-        setSelectedActivity(activity);
-        setEditMode(false);
+        agent.Activities.update(activity).then(() => {
+            setActivities([...activities.filter(a => a.id !== activity.id), activity]);
+            setSelectedActivity(activity);
+            setEditMode(false);
+        })
     };
 
     const handleDeletActivity = (id: string) => {
-        setActivities([...activities.filter(a => a.id !== id)]);
-    }
+        agent.Activities.delete(id).then(() => {
+            setActivities([...activities.filter(a => a.id !== id)]);
+        })
+    };
 
 
 
     useEffect(() => {
-      Axios.get<IActivity[]>('http://localhost:5000/api/activities')
+      agent.Activities.list()
           .then((response) => {
               let activities: IActivity[] = [];
-              response.data.forEach(activity => {
+              response.forEach((activity) => {
                   activity.date = activity.date.split('.')[0];
                   activities.push(activity)
               })
@@ -56,7 +62,7 @@ const App = () => {
      return (
          <Fragment>
              <NavBar openCreateForm={handleOpenCreateForm}/>
-             <Container sytle={{marginTop: '7em'}}>
+             <Container style={{marginTop: '7em'}}>
                  <ActivityDashboard activities={activities}
                      selectActivity={handleSelectActivity}
                      selectedActivity={selectedActivity}
